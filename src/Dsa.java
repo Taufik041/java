@@ -1,10 +1,25 @@
-import java.util.Arrays;
-
 public class Dsa {
     public static void main(String[] args) {
         int[] arr = {1, 12, 14, 5, 7, 19, 17};
-        int[] arr1 = {1, 1, 2, 3, 4, 5, 3, 4, 5, 6, 2, 8, 3, 6, 3, 7, 8};
-        System.out.println(xorExample4(4, 3));
+        System.out.println(recursionReverse(123, 0));
+    }
+
+    static int reverse(int n){
+        int sum =0;
+        while(n > 0){
+            int rem = n%10;
+            n = n/10;
+            sum = sum*10 + rem;
+        }
+        return sum;
+    }
+
+    static int recursionReverse(int n, int rev){
+        if(n < 10){
+            return n;
+        }
+        int rem = n%10;
+        return rev*10 + recursionReverse(n/10, rem*10);
     }
 
     static int xorExample4(int number, int bit) {              //Set nth bit of m = 0
@@ -35,7 +50,7 @@ public class Dsa {
         return (long) ((1/Math.sqrt(5))*(Math.pow((1 + Math.sqrt(5)) / 2, n) - Math.pow((1 - Math.sqrt(5)) / 2, n)));
     }
 
-    static int recursiveBinarySearch(int[] arr, int target, int start, int end){
+    static int recursionBinarySearch(int[] arr, int target, int start, int end){
         if(start > end){
             return -1;
         }
@@ -44,9 +59,9 @@ public class Dsa {
             return mid;
         }
         else if(target > arr[mid]){
-            return recursiveBinarySearch(arr, target, mid + 1, end);
+            return recursionBinarySearch(arr, target, mid + 1, end);
         }
-        return recursiveBinarySearch(arr, target, start, mid - 1);
+        return recursionBinarySearch(arr, target, start, mid - 1);
     }
 
     static int recursionFibonacci(int n){
